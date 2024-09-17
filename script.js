@@ -1,4 +1,5 @@
 import { GetSquarifyTreeMap } from "./modules/squarify.js"
+import { GetPivotTreeMap } from "./modules/pivot.js";
 
 const cac40Components = [
     { symbol: "OR", marketCap: 237.7 },   // L'Oréal, in billion euros
@@ -45,7 +46,9 @@ const cac40Components = [
 
 let testwidth = 1800;
 let testheight = 800;
-let result = GetSquarifyTreeMap(cac40Components,testwidth,testheight, "marketCap")
+// let result = GetSquarifyTreeMap(cac40Components,testwidth,testheight, "marketCap")
+let result = GetPivotTreeMap(cac40Components,testwidth,testheight, "marketCap", "size")
+console.log(result)
 
 // *****WIDTH + HEIGHT***** //
  
@@ -87,34 +90,34 @@ let result = GetSquarifyTreeMap(cac40Components,testwidth,testheight, "marketCap
 // window.addEventListener("load", draw);
  
 // *****SVG******
-const frame=document.querySelector("div.frame")
-let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-svg.setAttribute("width", testwidth);
-svg.setAttribute("height", testheight);
+// const frame=document.querySelector("div.frame")
+// let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+// svg.setAttribute("width", testwidth);
+// svg.setAttribute("height", testheight);
  
-result.forEach(item => {
-    let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+// result.forEach(item => {
+//     let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
  
-    rect.setAttribute("x", item.treemapSquarify.x);
-    rect.setAttribute("y", item.treemapSquarify.y);
-    rect.setAttribute("width", item.treemapSquarify.width);
-    rect.setAttribute("height", item.treemapSquarify.height);
-    rect.setAttribute("fill", "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0"));
+//     rect.setAttribute("x", item.treemapSquarify.x);
+//     rect.setAttribute("y", item.treemapSquarify.y);
+//     rect.setAttribute("width", item.treemapSquarify.width);
+//     rect.setAttribute("height", item.treemapSquarify.height);
+//     rect.setAttribute("fill", "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0"));
  
-    let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    let newContent = document.createTextNode(item["symbol"])
-    text.setAttribute("x", item.treemapSquarify.x+(item.treemapSquarify.width/2));
-    text.setAttribute("y", item.treemapSquarify.y+(item.treemapSquarify.height/2));
-    text.setAttribute("text-anchor", "middle");
-    text.setAttribute("font-size", "2rem")
+//     let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+//     let newContent = document.createTextNode(item["symbol"])
+//     text.setAttribute("x", item.treemapSquarify.x+(item.treemapSquarify.width/2));
+//     text.setAttribute("y", item.treemapSquarify.y+(item.treemapSquarify.height/2));
+//     text.setAttribute("text-anchor", "middle");
+//     text.setAttribute("font-size", "2rem")
  
-    text.setAttribute("dominant-baseline", "middle")
+//     text.setAttribute("dominant-baseline", "middle")
    
-    text.setAttribute("fill", "#000000");
-    text.appendChild(newContent)
+//     text.setAttribute("fill", "#000000");
+//     text.appendChild(newContent)
  
-    svg.appendChild(rect)
-    svg.appendChild(text)
+//     svg.appendChild(rect)
+//     svg.appendChild(text)
  
-    frame.appendChild(svg)
-});
+//     frame.appendChild(svg)
+// });

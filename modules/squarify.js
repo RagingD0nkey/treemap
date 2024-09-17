@@ -147,4 +147,5 @@ function GetSquarifyTreeMap(data, width, height, keyData = "value"){
     return finalData;
 }
 
+
 export { GetSquarifyTreeMap };
